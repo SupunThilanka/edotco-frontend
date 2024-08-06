@@ -23,7 +23,7 @@ export default function AddNewTower() {
     console.log('Selected Tower Type:', selectedType); // Debugging line
   
     const selectedTypeInfo = menuItems.towerTypes.find(item => item.type === selectedType);
-    console.log('Selected Tower Type Info:', selectedTypeInfo.image); // Debugging line
+    console.log('Selected Tower Type Info:', selectedTypeInfo); // Debugging line
     if (selectedTypeInfo) {
       try {
         const imagePath = require(`../../assets/Towers/${selectedTypeInfo.image}`);
@@ -33,6 +33,13 @@ export default function AddNewTower() {
         console.error('Error loading image:', error);
       }
     }
+    else {
+      setSelectedTowerImage('');
+    }
+  };
+
+  const handleDeselectOption = (option) => {
+    setSelectedEquipments((prevSelectedEquipments) => prevSelectedEquipments.filter(item => item !== option));
   };
 
   return (
@@ -44,7 +51,7 @@ export default function AddNewTower() {
             <div className={styles.FormGroup}>
               <label htmlFor="towerType">Tower Type</label>
               <select id="towerType" name="towerType" className={styles.Select} onChange={handleTowerTypeChange}>
-                <option value="">Select Tower Type</option>
+                <option value="Type 0">Select Tower Type</option>
                 {towerTypes.map((type, index) => (
                   <option key={index} value={type.type}>{type.type}</option>
                 ))}
@@ -60,7 +67,7 @@ export default function AddNewTower() {
               </select>
             </div>
             <div className={styles.FormGroup}>
-              <label htmlFor="location">Equipments</label>
+              <label htmlFor="equipment">Equipments</label>
               <CustomMultiSelectDropdown
                 options={equipments}
                 selectedOptions={selectedEquipments}
@@ -71,7 +78,16 @@ export default function AddNewTower() {
             <div className={styles.SelectedEquipments}>
               <ul>
                 {selectedEquipments.map((equipment, index) => (
-                  <li key={index}>{equipment}</li>
+                  <li key={index}>
+                    {equipment}
+                    <button
+                      type="button"
+                      className={styles.CloseButton}
+                      onClick={() => handleDeselectOption(equipment)}
+                    >
+                      &times;
+                    </button>
+                  </li>
                 ))}
               </ul>
             </div>
