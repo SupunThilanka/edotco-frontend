@@ -1,0 +1,25 @@
+{
+  "towerTypes": [
+    { "type": "Type 1", "image": "cell-tower.png" },
+    { "type": "Type 2", "image": "radio-tower.png" },
+    { "type": "Type 3", "image": "telecommunication.png" },
+    { "type": "Type 4", "image": "transmission-tower.png" }
+  ],
+  "locations": [
+    "Kuala Lumpur",
+    "Penang",
+    "Johor Bahru",
+    "Ipoh",
+    "Kuching",
+    "Kota Kinabalu",
+    "Malacca City"
+  ],
+  "equipments": [
+    "Equipment 1",
+    "Equipment 2",
+    "Equipment 3",
+    "Equipment 4",
+    "Equipment 5",
+    "Equipment 6"
+  ]
+}

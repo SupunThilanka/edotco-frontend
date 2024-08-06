@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home/home'; // Adjust the import path if necessary
+import AddNewTower from './pages/AddNewTower/AddNewTower'; // Create this component
+import AddNewTemplate from './pages/AddNewTemplate/AddNewTemplate'; // Create this component
+import AddNewEquipment from './pages/AddNewEquipment/AddNewEquipment'; // Create this component
+import SplashScreen from './components/SplashScreen/SplashScreen';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  const handleSplashEnd = () => {
+    setShowSplash(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {showSplash ? (
+        <SplashScreen onEnd={handleSplashEnd} />
+      ) : (
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/add-new-tower" element={<AddNewTower />} />
+        <Route path="/add-new-template" element={<AddNewTemplate />} />
+        <Route path="/add-new-equipment" element={<AddNewEquipment />} />
+      </Routes>
+      )}
+    </Router>
   );
 }
 
