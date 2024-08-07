@@ -46,6 +46,16 @@
   font-size: 16px;
   width: 250px;
   margin-top: 5px;
+  border-radius: 5px;
+}
+
+.Input {
+  padding: 3px;
+  font-size: 16px;
+  width: 180px;
+  margin: 15px;
+  border: 1px solid #61dafb;
+  border-radius: 5px;
 }
 
 .MenuButton {
@@ -142,4 +152,9 @@
   cursor: pointer;
   margin-left: 10px;
   padding: 0;
+}
+
+.SmallLabel {
+  font-size: 14px; // Adjust the font size as needed
+  width: 100px;
 }

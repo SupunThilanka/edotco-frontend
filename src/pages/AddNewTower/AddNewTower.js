@@ -11,6 +11,8 @@ export default function AddNewTower() {
   const [selectedTowerType, setSelectedTowerType] = useState('');
   const [selectedTowerImage, setSelectedTowerImage] = useState('');
   const [selectedEquipments, setSelectedEquipments] = useState([]);
+  const [longitude, setLongitude] = useState(''); // State for longitude
+  const [latitude, setLatitude] = useState(''); // State for latitude
 
   const navigate = useNavigate(); // Initialize the navigate function
 
@@ -37,8 +39,12 @@ export default function AddNewTower() {
         console.error('Error loading image:', error);
       }
     }
+    else {
+      setSelectedTowerImage('');
+    }
   };
-// Add the handleDeselectOption function
+
+  // Add the handleDeselectOption function
   const handleDeselectOption = (option) => {
     setSelectedEquipments((prevSelectedEquipments) => prevSelectedEquipments.filter(item => item !== option));
   };
@@ -50,7 +56,7 @@ export default function AddNewTower() {
   return (
     <div className={styles.AddNewTower}>
       <header className={styles.AddNewTowerHeader}>
-        <h1 className={styles.Title}>Tower Managment wizard</h1>
+        <h1 className={styles.Title}>Tower Management Wizard</h1>
         <div className={styles.Content}>
           <form className={styles.Form}>
             <div className={styles.FormGroup}>
@@ -64,12 +70,34 @@ export default function AddNewTower() {
             </div>
             <div className={styles.FormGroup}>
               <label htmlFor="location">Location</label>
-              <select id="location" name="location" className={styles.Select}>
+              {/* <select id="location" name="location" className={styles.Select}>
                 <option value="">Select Location</option>
                 {locations.map((location, index) => (
                   <option key={index} value={location}>{location}</option>
                 ))}
-              </select>
+              </select> */}
+              <span>
+              <label htmlFor="longitude" className={styles.SmallLabel}>Longitude</label>
+              <input
+                type="text"
+                id="longitude"
+                name="longitude"
+                className={styles.Input}
+                value={longitude}
+                onChange={(e) => setLongitude(e.target.value)}
+              />
+              </span>
+              <span>
+              <label htmlFor="latitude" className={styles.SmallLabel}>Latitude</label>
+              <input
+                type="text"
+                id="latitude"
+                name="latitude"
+                className={styles.Input}
+                value={latitude}
+                onChange={(e) => setLatitude(e.target.value)}
+              />
+              </span>
             </div>
             <div className={styles.FormGroup}>
               <label htmlFor="equipment">Equipments</label>
