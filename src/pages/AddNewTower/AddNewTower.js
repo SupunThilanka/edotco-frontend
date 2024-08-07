@@ -27,7 +27,7 @@ export default function AddNewTower() {
   
     // Find the selected tower type info from the menuItems JSON file.
     const selectedTypeInfo = menuItems.towerTypes.find(item => item.type === selectedType);
-    console.log('Selected Tower Type Info:', selectedTypeInfo.image); // Debugging line
+    // console.log('Selected Tower Type Info:', selectedTypeInfo.image); // Debugging line
     if (selectedTypeInfo) {
       try {
         const imagePath = require(`../../assets/Towers/${selectedTypeInfo.image}`); //set the tower image the path relevant to the tower type
@@ -50,7 +50,7 @@ export default function AddNewTower() {
   return (
     <div className={styles.AddNewTower}>
       <header className={styles.AddNewTowerHeader}>
-        <h1 className={styles.Title}>Tower Managment Vizard</h1>
+        <h1 className={styles.Title}>Tower Managment wizard</h1>
         <div className={styles.Content}>
           <form className={styles.Form}>
             <div className={styles.FormGroup}>
