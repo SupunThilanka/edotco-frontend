@@ -1,0 +1,182 @@
+.MultiSelectSearchableDropdown {
+  margin-bottom: 1.5rem;
+  position: relative;
+
+  .Label {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-align: left; // Align text to the left
+  }
+
+  .SearchInput {
+    width: 400px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    background-color: #0b0f1a;
+    color: white;
+
+    &::placeholder {
+      color: white; // Change this to your desired placeholder color
+      opacity: 1; // Ensure full opacity for placeholder text
+    }
+
+    &:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+  }
+
+  .OptionsList {
+    position: absolute;
+    width: 400px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #0b0f1a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+
+    max-height: 200px; // Ensure the dropdown has a height limit to enable scrolling
+    overflow-y: auto; // Enable vertical scrolling
+  
+    // Webkit browsers (e.g., Chrome, Safari)
+    &::-webkit-scrollbar {
+      width: 12px; // Width of the scrollbar
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: transparent; // Background color of the scrollbar track
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #555; // Background color of the scrollbar thumb
+      border-radius: 6px; // Round the corners
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      border: 1px solid #ccc;
+
+      &:hover {
+        background-color: #364a82;
+      }
+
+      .Checkbox {
+        margin-right: 1rem;
+      }
+
+      .EquipmentImage {
+        width: 50px;
+        height: 50px;
+        margin-right: 1rem;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+
+      .EquipmentDetails {
+        h4 {
+          margin: 0;
+          font-size: 1.1rem;
+          font-weight: bold;
+        }
+
+        p {
+          margin: 0.25rem 0 0;
+          font-size: 0.9rem;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .SelectedOptions {
+    margin-top: 2rem;
+    max-height: calc(6 * (0.5rem + 1rem) + 4px); // 3 rows + padding + border
+    overflow-y: auto;
+    width:400px;
+
+    // Webkit browsers (e.g., Chrome, Safari)
+    &::-webkit-scrollbar {
+      width: 12px; // Width of the scrollbar
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: transparent; // Background color of the scrollbar track
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #555; // Background color of the scrollbar thumb
+      border-radius: 6px; // Round the corners
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+  
+      li {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        background-color: #0b0f1a;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        margin-top: 0.25rem;
+        width: 100%; // Two items per row
+  
+        .EquipmentImage {
+          width: 50px;
+          height: 50px;
+          margin-right: 1rem;
+          border-radius: 4px;
+          object-fit: cover;
+        }
+  
+        .EquipmentDetails {
+          h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+          }
+  
+          p {
+            margin: 0.25rem 0 0;
+            font-size: 0.9rem;
+            color: #ffffff;
+          }
+        }
+  
+        button {
+          margin-left: auto;
+          background: none;
+          border: none;
+          color: #dc3545;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: color 0.2s;
+  
+          &:hover {
+            color: #c82333;
+          }
+        }
+      }
+    }
+  }
+}

@@ -29,7 +29,7 @@
 }
 
 .AppHeader {
-  background-color: #343a40;
+  background-color: #0b0f1a;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,20 +44,20 @@
 }
 
 .MenuButton {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  border: 1;
-  border-radius: 5px;
-  background-color: #023680;
-  color: rgb(255, 255, 255);
-  transition: background-color 0.3s;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    /* font-weight: bold; */
+    cursor: pointer;
+    border: 2px;
+    background-color: #343a40;
+    color: #b6b7ba;
+    transition: background-color 0.3s;
+    border-color: #b6b7ba;
 }
 
 .MenuButton:hover {
-  background-color: #0a6095;
+  background-color: #25282b;
 }
 
 .AppLink {

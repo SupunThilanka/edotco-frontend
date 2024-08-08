@@ -14,18 +14,20 @@ function App() {
   };
 
   return (
-    <Router>
-      {showSplash ? (
-        <SplashScreen onEnd={handleSplashEnd} />
-      ) : (
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add-new-tower" element={<AddNewTower />} />
-        <Route path="/add-new-template" element={<AddNewTemplate />} />
-        <Route path="/add-new-equipment" element={<AddNewEquipment />} />
-      </Routes>
-      )}
-    </Router>
+    <div style={{ backgroundColor: '#0b0f1a', height: '100vh', width: '100vw' }}>
+      <Router>
+        {showSplash ? (
+          <SplashScreen onEnd={handleSplashEnd} />
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/add-new-tower" element={<AddNewTower />} />
+            <Route path="/add-new-template" element={<AddNewTemplate />} />
+            <Route path="/add-new-equipment" element={<AddNewEquipment />} />
+          </Routes>
+        )}
+      </Router>
+    </div>
   );
 }
 
