@@ -5,6 +5,7 @@ import AddNewTower from './pages/AddNewTower/AddNewTower'; // Create this compon
 import AddNewTemplate from './pages/AddNewTemplate/AddNewTemplate'; // Create this component
 import AddNewEquipment from './pages/AddNewEquipment/AddNewEquipment'; // Create this component
 import SplashScreen from './components/SplashScreen/SplashScreen';
+import TowerDetails from './pages/TowerDetails/TowerDetails';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -24,6 +25,7 @@ function App() {
             <Route path="/add-new-tower" element={<AddNewTower />} />
             <Route path="/add-new-template" element={<AddNewTemplate />} />
             <Route path="/add-new-equipment" element={<AddNewEquipment />} />
+            <Route path="/tower-details" element={<TowerDetails />} />
           </Routes>
         )}
       </Router>

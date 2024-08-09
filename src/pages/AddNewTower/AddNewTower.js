@@ -69,7 +69,7 @@ export default function AddNewTower() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+  
     const selectedTowerTypeInfo = towerTypes.find((item) => item.name === selectedTowerType);
     const postData = {
       towerType: selectedTowerTypeInfo ? selectedTowerTypeInfo.tower_id : null,
@@ -86,7 +86,7 @@ export default function AddNewTower() {
         return equipmentItem.name;
       }),
     };
-
+  
     fetch('http://localhost:8000/api/towers', {
       method: 'POST',
       headers: {
@@ -97,13 +97,15 @@ export default function AddNewTower() {
       .then((response) => response.json())
       .then((data) => {
         console.log('Successfully created tower:', data);
-        setShowSuccessMessage(true); // Show success message
+        setShowSuccessMessage(true);
         setTimeout(() => {
-          setShowSuccessMessage(false); // Hide success message after 3 seconds
-        }, 3000);
+          setShowSuccessMessage(false);
+          navigate('/tower-details'); // Navigate to the new page
+        }, 1000);
       })
       .catch((error) => console.error('Error creating tower:', error));
   };
+  
 
   // const togglePreview = () => {
   //   setIsPreview(true); // Set preview state to true
