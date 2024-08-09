@@ -136,7 +136,7 @@ export default function AddNewTower() {
             <div className={styles.FormGroup}>
               <span>
                 <label htmlFor="height" className={styles.SmallLabel}>
-                  Height (m)
+                  Height (meters)
                 </label>
                 <input
                   type="text"

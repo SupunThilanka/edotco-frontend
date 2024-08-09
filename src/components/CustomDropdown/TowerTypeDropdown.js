@@ -47,7 +47,10 @@ const TowerTypeDropdown = ({ towerTypes, selectedTowerType, onTowerTypeChange })
             <li key={type.tower_id} onClick={() => handleSelectOption(type)}>
               <img src={getImageSrc(type.image_location)} alt={type.name} className={styles.TowerImage} />
               <div className={styles.TowerDetails}>
-                <h4>{type.name}</h4>
+                <h4>
+                  {type.name}
+                  <span className={styles.HeightRange}>{type.height_range}</span>
+                </h4>
                 <p>{type.description}</p>
               </div>
             </li>
