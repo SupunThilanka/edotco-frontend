@@ -15,6 +15,7 @@ export default function AddNewTower() {
   const [selectedEquipments, setSelectedEquipments] = useState([]);
   const [longitude, setLongitude] = useState('');
   const [latitude, setLatitude] = useState('');
+  const [height, setheight] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State for success message
   // const [isPreview, setIsPreview] = useState(false);
   const [showPreviewButton, setShowPreviewButton] = useState(false);
@@ -72,11 +73,17 @@ export default function AddNewTower() {
     const selectedTowerTypeInfo = towerTypes.find((item) => item.name === selectedTowerType);
     const postData = {
       towerType: selectedTowerTypeInfo ? selectedTowerTypeInfo.tower_id : null,
+      name: selectedTowerTypeInfo ? selectedTowerTypeInfo.name : null,
       longitude,
       latitude,
-      equipments: selectedEquipments.map((equipment) => {
+      height,
+      equipment_Ids: selectedEquipments.map((equipment) => {
         const equipmentItem = equipments.find((e) => e.name === equipment);
         return equipmentItem.equipment_id;
+      }),
+      equipment_names: selectedEquipments.map((equipment) => {
+        const equipmentItem = equipments.find((e) => e.name === equipment);
+        return equipmentItem.name;
       }),
     };
 
@@ -126,6 +133,21 @@ export default function AddNewTower() {
               selectedTowerType={selectedTowerType}
               onTowerTypeChange={handleTowerTypeChange}
             />
+            <div className={styles.FormGroup}>
+              <span>
+                <label htmlFor="height" className={styles.SmallLabel}>
+                  Height (m)
+                </label>
+                <input
+                  type="text"
+                  id="height"
+                  name="height"
+                  className={styles.Input}
+                  value={height}
+                  onChange={(e) => setheight(e.target.value)}
+                />
+              </span>
+            </div>
             <div className={styles.FormGroup}>
               <label htmlFor="location" className={styles.Label}>Location</label>
               <span>
