@@ -12,14 +12,14 @@ const TowerDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/towers')
+    fetch('http://52.21.129.119:8800/api/towers')
       .then((response) => response.json())
       .then((data) => setTowers(data))
       .catch((error) => console.error('Error fetching towers:', error));
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/created_equipments')
+    fetch('http://52.21.129.119:8800/api/created_equipments')
       .then((response) => response.json())
       .then((data) => setEquipments(data))
       .catch((error) => console.error('Error fetching equipments:', error));
