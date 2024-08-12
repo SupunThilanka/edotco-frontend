@@ -49,7 +49,7 @@ const TowerTypeDropdown = ({ towerTypes, selectedTowerType, onTowerTypeChange })
               <div className={styles.TowerDetails}>
                 <h4>
                   {type.name}
-                  <span className={styles.HeightRange}>{type.height_range}</span>
+                  <span className={styles.HeightRange}>{type.height}</span>
                 </h4>
                 <p>{type.description}</p>
               </div>

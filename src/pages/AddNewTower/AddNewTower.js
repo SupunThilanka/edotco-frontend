@@ -135,7 +135,7 @@ export default function AddNewTower() {
               selectedTowerType={selectedTowerType}
               onTowerTypeChange={handleTowerTypeChange}
             />
-            <div className={styles.FormGroup}>
+            {/* <div className={styles.FormGroup}>
               <span>
                 <label htmlFor="height" className={styles.SmallLabel}>
                   Height (meters)
@@ -149,7 +149,7 @@ export default function AddNewTower() {
                   onChange={(e) => setheight(e.target.value)}
                 />
               </span>
-            </div>
+            </div> */}
             <div className={styles.FormGroup}>
               <label htmlFor="location" className={styles.Label}>Location</label>
               <span>
@@ -176,6 +176,19 @@ export default function AddNewTower() {
                   className={styles.Input}
                   value={latitude}
                   onChange={(e) => setLatitude(e.target.value)}
+                />
+              </span>
+              <span>
+                <label htmlFor="height" className={styles.SmallLabel}>
+                  Height (meters)
+                </label>
+                <input
+                  type="text"
+                  id="height"
+                  name="height"
+                  className={styles.Input}
+                  value={height}
+                  onChange={(e) => setheight(e.target.value)}
                 />
               </span>
             </div>
