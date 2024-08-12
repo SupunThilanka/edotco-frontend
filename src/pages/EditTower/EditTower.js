@@ -5,6 +5,7 @@ import TowerTypeDropdown from '../../components/CustomDropdown/TowerTypeDropdown
 import EquipmentSelectDropdown from '../../components/CustomDropdown/EquipmentSelectDropdown';
 import backButtonImage from '../../assets/buttons/back.png';
 import logo from '../../assets/logo/edotco-wlogo.png';
+import { Link } from 'react-router-dom';
 // import { Select } from '@mui/material';
 
 export default function EditTower() {
@@ -142,7 +143,9 @@ export default function EditTower() {
     <div className={styles.AddNewTower}>
       <header className={styles.AddNewTowerHeader}>
         <div className={styles.HeaderContent}>
-          <img src={logo} alt="Logo" className={styles.Logo} />
+        <Link className={styles.Logo} to="/">
+            <img src={logo} alt="Logo" className={styles.Logo} />
+        </Link>
           <button onClick={handleBackClick} className={styles.BackButton}>
             <img src={backButtonImage} alt="Back" className={styles.BackButtonImage} />
           </button>

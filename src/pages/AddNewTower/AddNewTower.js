@@ -6,6 +6,7 @@ import EquipmentSelectDropdown from '../../components/CustomDropdown/EquipmentSe
 import backButtonImage from '../../assets/buttons/back.png';
 // import eyeImage from '../../assets/buttons/eye.png';
 import logo from '../../assets/logo/edotco-wlogo.png'; // Adjust the path as necessary
+import { Link } from 'react-router-dom';
 
 export default function AddNewTower() {
   const [towerTypes, setTowerTypes] = useState([]);
@@ -120,7 +121,9 @@ export default function AddNewTower() {
     <div className={styles.AddNewTower}>
       <header className={styles.AddNewTowerHeader}>
         <div className={styles.HeaderContent}>
-          <img src={logo} alt="Logo" className={styles.Logo} />
+        <Link className={styles.Logo} to="/">
+            <img src={logo} alt="Logo" className={styles.Logo} />
+        </Link>
           <button onClick={handleBackClick} className={styles.BackButton}>
             <img src={backButtonImage} alt="Back" className={styles.BackButtonImage} />
           </button>
