@@ -20,6 +20,10 @@ export default function EditTower() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     // Fetch tower types from the API
@@ -53,13 +57,9 @@ export default function EditTower() {
       .then((data) => {
         const equipmentNames = data.map(equipment => equipment.name);
         setSelectedEquipments(equipmentNames);
-        // setSelectedEquipments(data)
-        console.log('Edit Tower Equipments:', data);
-        console.log('Edit Tower SelectedEquipments:', selectedEquipments);
         })
       .catch((error) => console.error('Error fetching tower equipments:', error));
   }, [id]);
-
 
   const handleTowerTypeChange = (event) => {
     const selectedType = event.target.value;

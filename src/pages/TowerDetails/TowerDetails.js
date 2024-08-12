@@ -10,6 +10,10 @@ const TowerDetails = () => {
   const [towers, setTowers] = useState([]);
   const [equipments, setEquipments] = useState([]);
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     fetch('http://localhost:8800/api/towers')

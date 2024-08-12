@@ -23,6 +23,10 @@ export default function AddNewTower() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     // Fetch tower types from the API
     fetch('http://localhost:8800/api/tower-types')
       .then((response) => response.json())
