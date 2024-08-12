@@ -5,6 +5,7 @@ import backButtonImage from '../../assets/buttons/back.png';
 import logo from '../../assets/logo/edotco-wlogo.png';
 import editIcon from '../../assets/buttons/edit.png';
 import deleteIcon from '../../assets/buttons/delete.png';
+import { Link } from 'react-router-dom';
 
 const TowerDetails = () => {
   const [towers, setTowers] = useState([]);
@@ -66,7 +67,9 @@ const TowerDetails = () => {
     <div className={styles.AddNewTower}>
       <header className={styles.AddNewTowerHeader}>
         <div className={styles.HeaderContent}>
-          <img src={logo} alt="Logo" className={styles.Logo} />
+        <Link className={styles.Logo} to="/">
+            <img src={logo} alt="Logo" className={styles.Logo} />
+        </Link>
           <button onClick={handleBackClick} className={styles.BackButton}>
             <img src={backButtonImage} alt="Back" className={styles.BackButtonImage} />
           </button>

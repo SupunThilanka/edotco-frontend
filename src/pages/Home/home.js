@@ -22,6 +22,9 @@ export default function Home() {
           <Link to="/add-new-equipment">
             <button className={styles.MenuButton}>Add New Equipment</button>
           </Link>
+          <Link to="/tower-details">
+            <button className={styles.MenuButton}>Tower details</button>
+          </Link>
         </div>
       </header>
     </div>
