@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './TowerDetails.module.scss';
 import backButtonImage from '../../assets/buttons/back.png';
-import logo from '../../assets/logo/edotco-wlogo.png'; // Adjust the path as necessary
-import editIcon from '../../assets/buttons/edit.png'; // Adjust the path as necessary
-import deleteIcon from '../../assets/buttons/delete.png'; // Adjust the path as necessary
+import logo from '../../assets/logo/edotco-wlogo.png';
+import editIcon from '../../assets/buttons/edit.png';
+import deleteIcon from '../../assets/buttons/delete.png';
 
 const TowerDetails = () => {
   const [towers, setTowers] = useState([]);
@@ -22,17 +22,31 @@ const TowerDetails = () => {
     fetch('http://localhost:8800/api/created_equipments')
       .then((response) => response.json())
       .then((data) => setEquipments(data))
+      // .then((data) => {
+      //   const equipmentNames = data.map(equipment => equipment.name);
+      //   setEquipments(equipmentNames);
+      // })
       .catch((error) => console.error('Error fetching equipments:', error));
   }, []);
 
   const handleEdit = (tower) => {
-    // Handle edit functionality
+    navigate(`/edit-tower/${tower.creation_id}`);
   };
 
   const handleDelete = (tower) => {
-    // Handle delete functionality
+    const confirmDelete = window.confirm("Are you sure you want to delete this tower?");
+    if (confirmDelete) {
+      fetch(`http://localhost:8800/api/towers/${tower.creation_id}`, {
+        method: 'DELETE',
+      })
+        .then((response) => response.json())
+        .then(() => {
+          setTowers(towers.filter((t) => t.creation_id !== tower.creation_id));
+        })
+        .catch((error) => console.error('Error deleting tower:', error));
+    }
   };
-
+  
   const handleBackClick = () => {
     navigate('/add-new-tower');
   };
@@ -40,7 +54,7 @@ const TowerDetails = () => {
   const getTowerEquipments = (towerCreationId) => {
     return equipments
       .filter((equipment) => equipment.creation_id === towerCreationId)
-      .map((equipment) => equipment.equipment_id)
+      .map((equipment) => equipment.name)
       .join(', ');
   };
 
@@ -63,8 +77,9 @@ const TowerDetails = () => {
                 <th>Longitude</th>
                 <th>Latitude</th>
                 <th>Tower Type</th>
-                <th>Height</th>
+                <th>Height(m)</th>
                 <th>Equipments</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -74,9 +89,10 @@ const TowerDetails = () => {
                   <td>{tower.creation_id}</td>
                   <td>{tower.longitude}</td>
                   <td>{tower.latitude}</td>
-                  <td>{tower.tower_id}</td>
+                  <td>{tower.tower_name}</td>
                   <td>{tower.height}</td>
                   <td>{getTowerEquipments(tower.creation_id)}</td>
+                  <td>{tower.status}</td>
                   <td>
                     <button onClick={() => handleEdit(tower)} className={styles.IconButton}>
                       <img src={editIcon} alt="Edit" className={styles.Icon} />

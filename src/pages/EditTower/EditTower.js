@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './AddNewTower.module.scss';
 import TowerTypeDropdown from '../../components/CustomDropdown/TowerTypeDropdown';
 import EquipmentSelectDropdown from '../../components/CustomDropdown/EquipmentSelectDropdown';
 import backButtonImage from '../../assets/buttons/back.png';
-// import eyeImage from '../../assets/buttons/eye.png';
-import logo from '../../assets/logo/edotco-wlogo.png'; // Adjust the path as necessary
+import logo from '../../assets/logo/edotco-wlogo.png';
+// import { Select } from '@mui/material';
 
-export default function AddNewTower() {
+export default function EditTower() {
+  const { id } = useParams(); // Get the tower ID from URL parameters
   const [towerTypes, setTowerTypes] = useState([]);
   const [equipments, setEquipments] = useState([]);
   const [selectedTowerType, setSelectedTowerType] = useState('');
@@ -15,10 +16,8 @@ export default function AddNewTower() {
   const [selectedEquipments, setSelectedEquipments] = useState([]);
   const [longitude, setLongitude] = useState('');
   const [latitude, setLatitude] = useState('');
-  const [height, setheight] = useState('');
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State for success message
-  // const [isPreview, setIsPreview] = useState(false);
-  const [showPreviewButton, setShowPreviewButton] = useState(false);
+  const [height, setHeight] = useState('');
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,35 +25,52 @@ export default function AddNewTower() {
     // Fetch tower types from the API
     fetch('http://localhost:8800/api/tower-types')
       .then((response) => response.json())
-      .then((data) => {
-        console.log('Fetched tower types:', data);
-        setTowerTypes(data);
-      })
+      .then((data) => setTowerTypes(data))
       .catch((error) => console.error('Error fetching tower types:', error));
 
     // Fetch equipments from the API
     fetch('http://localhost:8800/api/equipments')
       .then((response) => response.json())
-      .then((data) => {
-        console.log('Fetched equipments:', data);
-        setEquipments(data);
-      })
+      .then((data) => setEquipments(data))
       .catch((error) => console.error('Error fetching equipments:', error));
-  }, []);
+
+    // Fetch the existing tower data
+    fetch(`http://localhost:8800/api/towers/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setSelectedTowerType(data.tower_name);
+        setLongitude(data.longitude);
+        setLatitude(data.latitude);
+        setHeight(data.height);
+        const imagePath = require(`../../assets/Towers/${data.tower_image}`);
+        setSelectedTowerImage(imagePath);
+      })
+      .catch((error) => console.error('Error fetching tower data:', error));
+
+    // Fetch the equipments for the tower
+    fetch(`http://localhost:8800/api/towers/${id}/equipments`)
+      .then((response) => response.json())
+      .then((data) => {
+        const equipmentNames = data.map(equipment => equipment.name);
+        setSelectedEquipments(equipmentNames);
+        // setSelectedEquipments(data)
+        console.log('Edit Tower Equipments:', data);
+        console.log('Edit Tower SelectedEquipments:', selectedEquipments);
+        })
+      .catch((error) => console.error('Error fetching tower equipments:', error));
+  }, [id]);
+
 
   const handleTowerTypeChange = (event) => {
     const selectedType = event.target.value;
     setSelectedTowerType(selectedType);
-    setShowPreviewButton(true);
     setSelectedTowerImage('');
-    // setIsPreview(false);
 
     const selectedTypeInfo = towerTypes.find((item) => item.name === selectedType);
     if (selectedTypeInfo) {
       try {
         const imagePath = require(`../../assets/Towers/${selectedTypeInfo.image_location}`);
         setSelectedTowerImage(imagePath);
-        console.log('Selected tower image:', imagePath);
       } catch (error) {
         console.error('Error loading image:', error);
       }
@@ -64,12 +80,12 @@ export default function AddNewTower() {
   };
 
   const handleBackClick = () => {
-    navigate('/');
+    navigate('/tower-details');
   };
 
-  const handleSubmit = (event) => {
+  const handleSave = (event) => {
     event.preventDefault();
-  
+
     const selectedTowerTypeInfo = towerTypes.find((item) => item.name === selectedTowerType);
     const postData = {
       towerType: selectedTowerTypeInfo ? selectedTowerTypeInfo.tower_id : null,
@@ -86,9 +102,9 @@ export default function AddNewTower() {
         return equipmentItem.name;
       }),
     };
-  
-    fetch('http://localhost:8800/api/towers', {
-      method: 'POST',
+
+    fetch(`http://localhost:8800/api/towers/${id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -96,21 +112,31 @@ export default function AddNewTower() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Successfully created tower:', data);
+        console.log('Successfully updated tower:', data);
         setShowSuccessMessage(true);
         setTimeout(() => {
           setShowSuccessMessage(false);
-          navigate('/tower-details'); // Navigate to the new page
+          navigate('/tower-details'); // Navigate back to the details page
         }, 1000);
       })
-      .catch((error) => console.error('Error creating tower:', error));
+      .catch((error) => console.error('Error updating tower:', error));
   };
-  
 
-  // const togglePreview = () => {
-  //   setIsPreview(true); // Set preview state to true
-  //   setShowPreviewButton(false); // Hide the preview button after previewing
-  // };
+  const handleDelete = () => {
+
+    const confirmDelete = window.confirm("Are you sure you want to delete this tower?");
+    if (confirmDelete) {
+    fetch(`http://localhost:8800/api/towers/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Successfully deleted tower:', data);
+        navigate('/tower-details'); // Navigate back to the details page
+      })
+      .catch((error) => console.error('Error deleting tower:', error));
+    }
+  };
 
   return (
     <div className={styles.AddNewTower}>
@@ -120,16 +146,16 @@ export default function AddNewTower() {
           <button onClick={handleBackClick} className={styles.BackButton}>
             <img src={backButtonImage} alt="Back" className={styles.BackButtonImage} />
           </button>
-          <h1 className={styles.Title}>Tower Management Wizard</h1>
+          <h1 className={styles.Title}>Edit Tower</h1>
         </div>
         <div className={styles.Divider}></div>
         {showSuccessMessage && (
           <div className={styles.SuccessMessage}>
-            Successfully Created Tower
+            Successfully Updated Tower
           </div>
         )}
         <div className={styles.Content}>
-          <form className={styles.Form} onSubmit={handleSubmit}>
+          <form className={styles.Form} onSubmit={handleSave}>
             <TowerTypeDropdown
               towerTypes={towerTypes}
               selectedTowerType={selectedTowerType}
@@ -173,7 +199,7 @@ export default function AddNewTower() {
                   name="height"
                   className={styles.Input}
                   value={height}
-                  onChange={(e) => setheight(e.target.value)}
+                  onChange={(e) => setHeight(e.target.value)}
                 />
               </span>
             </div>
@@ -184,7 +210,10 @@ export default function AddNewTower() {
               label="Select Equipments"
             />
             <button type="submit" className={styles.MenuButton}>
-              Submit
+              Save
+            </button>
+            <button type="button" onClick={handleDelete} className={styles.MenuButton}>
+              Delete
             </button>
           </form>
           <div className={styles.ImageContainer}>
@@ -192,16 +221,10 @@ export default function AddNewTower() {
               <img
                 src={selectedTowerImage}
                 alt={selectedTowerType}
-                className={`${styles.TowerImage} `}  //${!isPreview ? styles.Blur : ''}
+                className={`${styles.TowerImage}`}
               />
             )}
-            {/* {showPreviewButton && !isPreview && (
-              <button className={styles.PreviewButton} onClick={togglePreview}>
-                <img src={eyeImage} alt="Preview" className={styles.PreviewIcon} />
-                <div className={styles.PreviewText}>Preview</div>
-              </button>
-            )} */}
-            {!selectedTowerImage && !showPreviewButton && (
+            {!selectedTowerImage && (
               <div className={styles.Placeholder}>No Tower Selected</div>
             )}
           </div>
