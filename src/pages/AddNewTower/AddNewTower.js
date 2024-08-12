@@ -24,7 +24,7 @@ export default function AddNewTower() {
 
   useEffect(() => {
     // Fetch tower types from the API
-    fetch('http://localhost:8000/api/tower-types')
+    fetch('http://localhost:8800/api/tower-types')
       .then((response) => response.json())
       .then((data) => {
         console.log('Fetched tower types:', data);
@@ -33,7 +33,7 @@ export default function AddNewTower() {
       .catch((error) => console.error('Error fetching tower types:', error));
 
     // Fetch equipments from the API
-    fetch('http://localhost:8000/api/equipments')
+    fetch('http://localhost:8800/api/equipments')
       .then((response) => response.json())
       .then((data) => {
         console.log('Fetched equipments:', data);
@@ -87,7 +87,7 @@ export default function AddNewTower() {
       }),
     };
   
-    fetch('http://localhost:8000/api/towers', {
+    fetch('http://localhost:8800/api/towers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
