@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './EquipmentSelectDropdown.module.scss';
 
-const EquipmentSelectDropdown = ({ equipments, selectedEquipments, setSelectedEquipments, label }) => {
+const EquipmentSelectDropdown = ({ equipments = [], selectedEquipments, setSelectedEquipments, label }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -9,6 +9,7 @@ const EquipmentSelectDropdown = ({ equipments, selectedEquipments, setSelectedEq
   const handleSelectOption = (option) => {
     if (!selectedEquipments.includes(option.name)) {
       setSelectedEquipments([...selectedEquipments, option.name]);
+      console.log('Selected equipments option.name:', option.name);
     } else {
       setSelectedEquipments(selectedEquipments.filter(item => item !== option.name));
     }
@@ -56,7 +57,7 @@ const EquipmentSelectDropdown = ({ equipments, selectedEquipments, setSelectedEq
       />
       {isDropdownOpen && (
         <ul className={styles.OptionsList}>
-          {filteredOptions.map((option, index) => (
+          {Array.isArray(filteredOptions) && filteredOptions.map((option, index) => (
             <li key={index} onClick={() => handleSelectOption(option)}>
               <input
                 type="checkbox"
