@@ -91,7 +91,9 @@ const TowerDetails = () => {
               </tr>
             </thead>
             <tbody>
-              {towers.map((tower) => (
+              {towers
+              .sort((a, b) => a.creation_id - b.creation_id)
+              .map((tower) => (
                 <tr key={tower.creation_id}>
                   <td>{tower.creation_id}</td>
                   <td>{tower.longitude}</td>
