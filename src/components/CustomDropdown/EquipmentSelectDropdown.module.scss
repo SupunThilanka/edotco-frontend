@@ -179,4 +179,28 @@
       }
     }
   }
+
+/* Media queries for responsiveness */
+// mobile view
+  @media (max-width: 480px) {
+    .SearchInput { 
+      width: 90%;
+    }
+  
+    .OptionsList { 
+      width: 90%;
+    }
+    .SelectedOptions { 
+      width: 90%;
+    }
+  }
+
+  /* Tablet view */
+  @media (max-width: 768px) {
+
 }
+  
+
+}
+
+

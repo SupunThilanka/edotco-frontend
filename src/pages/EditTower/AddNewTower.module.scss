@@ -1,3 +1,4 @@
+/* Base styles (for larger screens) */
 .AddNewTower {
   text-align: left;
 }
@@ -7,25 +8,26 @@
   min-height: 120vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; // Align items to the left
+  align-items: flex-start; /* Align items to the left */
   font-size: calc(10px + 2vmin);
   color: white;
-  // padding-left: 20px; // Padding from the left edge
+  /* padding-left: 20px; */
 }
 
 .HeaderContent {
   display: flex;
+  flex-direction: row;
   align-items: center;
   width: 100%;
   background-color: #1e1816;
 }
 
 .Logo {
-  width: 120px; // Adjust size as needed
-  height: auto; // Maintain aspect ratio
-  margin-left: 4%; // Space between logo and back button
-  margin-top:1%;
-  margin-bottom:1%;
+  width: 120px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 4%; /* Space between logo and back button */
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .BackButton {
@@ -34,30 +36,30 @@
   cursor: pointer;
   margin-left: 5%;
   margin-bottom: 1%;
-  padding-right: 10px; // Space between button and title
+  padding-right: 10px; /* Space between button and title */
 }
 
 .BackButtonImage {
-  width: 24px; // Adjust size as needed
-  height: 24px; // Adjust size as needed
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
 }
 
 .Title {
   font-size: 25px;
-  // padding-top: 30px;
+  /* padding-top: 30px; */
   padding-bottom: 0px;
   margin-left: 1%;
   font-weight: bold;
   color: #fff;
-  text-align: center; // Ensure text is aligned left within the title
+  text-align: center; /* Ensure text is aligned left within the title */
 }
 
 .Divider {
-  width: 100%; // Make sure it spans the full width
-  border-bottom: 2px solid #707070; // Define the bottom border
-  margin-top: -20px; // Adjust margin to bring the divider closer to the title
-  margin-bottom: 20px; // Adjust margin to bring the divider closer to the title
-  padding-bottom: 20px; // Add padding below the divider for spacing
+  width: 100%; /* Make sure it spans the full width */
+  border-bottom: 2px solid #707070; /* Define the bottom border */
+  margin-top: -20px; /* Adjust margin to bring the divider closer to the title */
+  margin-bottom: 20px; /* Adjust margin to bring the divider closer to the title */
+  padding-bottom: 20px; /* Add padding below the divider for spacing */
 }
 
 .Content {
@@ -65,7 +67,6 @@
   width: 95%;
   justify-content: space-between;
   align-items: flex-start;
-
 }
 
 .Form {
@@ -83,14 +84,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.Select {
-  padding: 5px;
-  font-size: 16px;
-  width: 250px;
-  margin-top: 5px;
-  border-radius: 5px;
 }
 
 .Input {
@@ -121,22 +114,6 @@
   background-color: #364a82;
 }
 
-// .BackButton {
-//   margin: 10px;
-//   padding: 10px 20px;
-//   font-size: 18px;
-//   cursor: pointer;
-//   border: 1;
-//   border-radius: 5px;
-//   background-color: #ccc;
-//   color: #000;
-//   transition: background-color 0.3s;
-// }
-
-// .BackButton:hover {
-//   background-color: #999;
-// }
-
 .Content {
   display: flex;
 }
@@ -159,31 +136,10 @@
   background-color: #0b0f1a;
 }
 
-.Blur {
-  filter: blur(5px);
-}
-
 .TowerImage {
   max-width: 100%;
   max-height: 100%;
   background-color: #0b0f1a;
-}
-
-.PreviewButton {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.PreviewIcon {
-  width: 50px;
 }
 
 .PreviewText {
@@ -202,61 +158,8 @@
   color: #888;
 }
 
-.MultiSelect {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #61dafb;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: #343a40;
-}
-
-.CheckboxLabel {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: white;
-  padding: 5px 0;
-}
-
-.SelectedEquipments {
-  ul {
-    display: flex;
-    flex-wrap: wrap; /* Allows items to wrap to the next row */
-    list-style-type: none;
-    padding: 0;
-    max-width: 600px; /* Set a maximum width for the container (3 items * 160px each) */
-    
-    li {
-      background: #0e1313;
-      color: white;
-      padding: 5px;
-      margin: 5px;
-      border-radius: 5px;
-      font-size: 16px;
-      flex: 1 1 30%; /* Adjust flex basis to fit three items per row */
-      max-width: 150px; /* Set a fixed width for each item */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    }
-  }
-}
-
-
-.CloseButton {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: 10px;
-  padding: 0;
-}
-
 .SmallLabel {
-  font-size: 14px; // Adjust the font size as needed
+  font-size: 14px; /* Adjust the font size as needed */
   width: 100px;
 }
 
@@ -265,7 +168,7 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  text-align: left; // Align text to the left
+  text-align: left; /* Align text to the left */
 }
 
 .SuccessMessage {
@@ -273,11 +176,105 @@
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #4caf50; // Green background for success
+  background-color: #4caf50; /* Green background for success */
   color: white;
   padding: 10px 20px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   font-size: 16px;
+}
+
+/* Media queries for responsiveness */
+
+/* Tablet view */
+@media (max-width: 768px) {
+  .AddNewTowerHeader {
+    font-size: calc(8px + 2vmin);
+  }
+
+  .HeaderContent {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .Title {
+    font-size: 20px;
+  }
+
+  .Content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Form {
+    width: 80%;
+    margin-left: 0;
+  }
+
+  .ImageContainer {
+
+    width: 80%;
+    height: auto;
+    margin-left: 20px;
+
+  }
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+  .AddNewTowerHeader {
+    font-size: calc(7px + 2vmin);
+  }
+
+  .HeaderContent {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .Logo {
+    width: 80px;
+  }
+
+  .BackButtonImage {
+    width: 20px;
+    height: 20px;
+  }
+
+  .Title {
+    font-size: 18px;
+  }
+
+  .Content {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+
+  }
+
+  .Form {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .Input {
+    width: 90%;
+    margin: 10px 0;
+  }
+
+  .MenuButton {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .ImageContainer {
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .TowerImage {
+    width: 100%;
+    height: auto;
+  }
 }

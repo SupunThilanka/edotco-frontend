@@ -1,3 +1,4 @@
+/* Base styles (for larger screens) */
 .App {
   text-align: center;
 }
@@ -7,20 +8,22 @@
   padding-top: 30px;
   font-weight: bold;
   color: #6edd7d;
-  sup {
-    position: absolute;
-    font-size: 12px;
-    color: #ffffff2b;
-  }
+}
+
+.Title sup {
+  position: absolute;
+  font-size: 12px;
+  color: #ffffff2b;
 }
 
 .Logo {
   animation: App-logo-spin infinite 20s linear;
   height: 100px;
-  svg {
-    width: 100%;
-    height: 100%;
-  }
+}
+
+.Logo svg {
+  width: 100%;
+  height: 100%;
 }
 
 .Des {
@@ -44,16 +47,15 @@
 }
 
 .MenuButton {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 18px;
-    /* font-weight: bold; */
-    cursor: pointer;
-    border: 2px;
-    background-color: #343a40;
-    color: #b6b7ba;
-    transition: background-color 0.3s;
-    border-color: #b6b7ba;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border: 2px;
+  background-color: #343a40;
+  color: #b6b7ba;
+  transition: background-color 0.3s;
+  border-color: #b6b7ba;
 }
 
 .MenuButton:hover {
@@ -73,5 +75,62 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Media queries for responsiveness */
+
+/* Tablet view */
+@media (max-width: 768px) {
+  .Title {
+    font-size: 30px;
+  }
+
+  .Des {
+    font-size: 18px;
+    padding: 50px 15px 20px 15px;
+  }
+
+  .Logo {
+    height: 80px;
+  }
+
+  .MenuButton {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .AppHeader {
+    font-size: calc(8px + 2vmin);
+  }
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+  .Title {
+    font-size: 24px;
+  }
+
+  .Des {
+    font-size: 16px;
+    padding: 40px 10px 15px 10px;
+  }
+
+  .Logo {
+    height: 60px;
+  }
+
+  .MenuButton {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .AppLink {
+    font-size: 14px;
+    margin: 0 3px;
+  }
+
+  .AppHeader {
+    font-size: calc(7px + 2vmin);
   }
 }

@@ -1,107 +1,209 @@
+/* Base styles (for larger screens) */
 .AddNewTower {
-    text-align: center;
-  }
-  
+  text-align: center;
+}
+
+.AddNewTowerHeader {
+  background-color: #0b0f1a;
+  min-height: 300vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.HeaderContent {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #1e1816;
+}
+
+.Logo {
+  width: 120px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 4%; /* Space between logo and back button */
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.BackButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 5%;
+  margin-bottom: 1%;
+  padding-right: 10px; /* Space between button and title */
+}
+
+.BackButtonImage {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+}
+
+.Title {
+  font-size: 25px;
+  padding-bottom: 0px;
+  margin-left: 1%;
+  font-weight: bold;
+  color: #fff;
+  text-align: center; /* Ensure text is aligned left within the title */
+}
+
+.Divider {
+  width: 100%; /* Make sure it spans the full width */
+  border-bottom: 2px solid #707070; /* Define the bottom border */
+  margin-top: -20px; /* Adjust margin to bring the divider closer to the title */
+  margin-bottom: 20px; /* Adjust margin to bring the divider closer to the title */
+  padding-bottom: 20px; /* Add padding below the divider for spacing */
+}
+
+.TowerDetails {
+  padding: 20px;
+  color: white;
+  margin-right: 60px;
+}
+
+.TowerDetails h1 {
+  text-align: center;
+  color: white;
+}
+
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 40px 40px;
+}
+
+.Table th, .Table td {
+  border: 1px solid #fefefe;
+  padding: 8px;
+  text-align: center;
+}
+
+.Table th {
+  background-color: #547e7b;
+}
+
+button {
+  margin: 10px 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.IconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.Icon {
+  width: 25px;
+}
+
+/* Media queries for responsiveness */
+
+/* Tablet view */
+@media (max-width: 912px) {
+
   .AddNewTowerHeader {
-    background-color: #0b0f1a;
-    min-height: 300vh;
-    display: flex;
-    flex-direction: column;
-    // align-items: fle; // Align items to the left
-    font-size: calc(10px + 2vmin);
-    color: white;
-    // padding-left: 20px; // Padding from the left edge
+    width:200%;
+  }
+  .Logo {
+    width: 100px;
+  }
+
+  .Title {
+    font-size: 20px;
+  }
+
+  .Divider {
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+
+  .TowerDetails {
+    margin-right: 30px;
+  }
+
+  .Table {
+    margin: 20px 20px;
+  }
+
+  button {
+    margin: 8px 8px;
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  .Icon {
+    width: 20px;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+  .AddNewTowerHeader {
+    font-size: calc(8px + 2vmin);
+    width:200%;
   }
 
   .HeaderContent {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    background-color: #1e1816;
+    flex-direction: row;
   }
-  
+
   .Logo {
-    width: 120px; // Adjust size as needed
-    height: auto; // Maintain aspect ratio
-    margin-left: 4%; // Space between logo and back button
-    margin-top:1%;
-    margin-bottom:1%;
+    width: 80px;
+    margin-left: 10px;
   }
-  
+
   .BackButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 5%;
-    margin-bottom: 1%;
-    padding-right: 10px; // Space between button and title
+    margin-left: 10px;
+    padding-right: 10px;
   }
-  
+
   .BackButtonImage {
-    width: 24px; // Adjust size as needed
-    height: 24px; // Adjust size as needed
+    width: 20px;
+    height: 20px;
   }
-  
+
   .Title {
-    font-size: 25px;
-    // padding-top: 30px;
-    padding-bottom: 0px;
-    margin-left: 1%;
-    font-weight: bold;
-    color: #fff;
-    text-align: center; // Ensure text is aligned left within the title
+    font-size: 18px;
+    margin-left: 0;
   }
-  
+
   .Divider {
-    width: 100%; // Make sure it spans the full width
-    border-bottom: 2px solid #707070; // Define the bottom border
-    margin-top: -20px; // Adjust margin to bring the divider closer to the title
-    margin-bottom: 20px; // Adjust margin to bring the divider closer to the title
-    padding-bottom: 20px; // Add padding below the divider for spacing
+    margin-top: -10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
   }
 
+  .TowerDetails {
+    margin-right: 0;
+    padding: 10px;
+  }
 
-    .TowerDetails {
-        padding: 20px;
-        color:white;
-        margin-right: 60px;
-    
-        h1 {
-        text-align: center;
-        color:white;
-        }
-    
-        .Table {
-        width: 100%;
-        border-collapse: collapse;
-        margin:40px 40px;
-    
-        th, td {
-            border: 1px solid #fefefe;
-            padding: 8px;
-            text-align: center;
-        }
-    
-        th {
-            background-color: #547e7b;
-        }
-        }
-    
-        button {
-            margin: 10px 10px;
-            padding: 10px 20px;
-            cursor: pointer;
-          }
-        
-          .IconButton {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-          }
-        
-          .Icon {
-            width: 25px;
-          }
-    }
-    
+  .Table {
+    margin: 10px 10px;
+    font-size: 14px;
+  }
+
+  .Table th, .Table td {
+    padding: 6px;
+  }
+
+  button {
+    margin: 5px 5px;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .IconButton {
+    padding: 3px;
+  }
+
+  .Icon {
+    width: 15px;
+  }
+}
