@@ -99,24 +99,29 @@ export default function AddNewTower() {
       },
       body: JSON.stringify(postData),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
+        if (data.error) {
+          throw new Error(data.error);
+        }
         console.log('Successfully created tower:', data);
         setShowSuccessMessage(true);
         setTimeout(() => {
           setShowSuccessMessage(false);
           navigate('/tower-details'); // Navigate to the new page
-        }, 1000);
+        }, 500);
       })
-      .catch((error) => console.error('Error creating tower:', error));
+      .catch((error) => {
+        console.error('Error creating tower:', error);
+        alert(`Error creating tower: ${error.message}`);
+      });
   };
   
-
-  // const togglePreview = () => {
-  //   setIsPreview(true); // Set preview state to true
-  //   setShowPreviewButton(false); // Hide the preview button after previewing
-  // };
-
   return (
     <div className={styles.AddNewTower}>
       <header className={styles.AddNewTowerHeader}>
@@ -191,7 +196,7 @@ export default function AddNewTower() {
               label="Select Equipments"
             />
             <button type="submit" className={styles.MenuButton}>
-              Submit
+              Create
             </button>
           </form>
           <div className={styles.ImageContainer}>
@@ -202,12 +207,6 @@ export default function AddNewTower() {
                 className={`${styles.TowerImage} `}  //${!isPreview ? styles.Blur : ''}
               />
             )}
-            {/* {showPreviewButton && !isPreview && (
-              <button className={styles.PreviewButton} onClick={togglePreview}>
-                <img src={eyeImage} alt="Preview" className={styles.PreviewIcon} />
-                <div className={styles.PreviewText}>Preview</div>
-              </button>
-            )} */}
             {!selectedTowerImage && !showPreviewButton && (
               <div className={styles.Placeholder}>No Tower Selected</div>
             )}

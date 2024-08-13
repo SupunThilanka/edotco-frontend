@@ -1,3 +1,4 @@
+/* Base styles (for larger screens) */
 .SplashScreen {
   display: flex;
   flex-direction: row;
@@ -5,27 +6,58 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background-color: #0b0f1a; // Background color during the splash screen display
-  position: fixed; // Ensure the splash screen covers the entire viewport
+  background-color: #0b0f1a; /* Background color during the splash screen display */
+  position: fixed; /* Ensure the splash screen covers the entire viewport */
   top: 0;
   left: 0;
-  z-index: 9999; // Ensure it's on top of everything else
-  transition: opacity 0.5s ease-out, background-color 0.5s ease-out; // Smooth transition for fade-out
+  z-index: 9999; /* Ensure it's on top of everything else */
+  transition: opacity 0.5s ease-out, background-color 0.5s ease-out; /* Smooth transition for fade-out */
 }
 
 .Logo1 {
-  width: 200px; // Adjust size as needed
+  width: 200px; /* Adjust size as needed */
   margin: 20px;
-  margin: 5%;
 }
+
 .Logo2 {
-  width: 350px; // Adjust size as needed
+  width: 350px; /* Adjust size as needed */
   margin: 20px;
-  margin: 5%;
 }
 
 .FadeOut {
-  opacity: 0; // Fades out the element
-  background-color: transparent; // Ensure background becomes transparent during fade-out
-  pointer-events: none; // Prevent interaction with the faded-out splash screen
+  opacity: 0; /* Fades out the element */
+  background-color: transparent; /* Ensure background becomes transparent during fade-out */
+  pointer-events: none; /* Prevent interaction with the faded-out splash screen */
+}
+
+/* Media queries for responsiveness */
+
+/* Tablet view */
+@media (max-width: 768px) {
+  .Logo1 {
+    width: 150px; /* Adjust size as needed */
+    margin: 15px;
+  }
+
+  .Logo2 {
+    width: 250px; /* Adjust size as needed */
+    margin: 15px;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+  .SplashScreen {
+    flex-direction: column; /* Stack logos vertically on mobile */
+  }
+
+  .Logo1 {
+    width: 100px; /* Adjust size as needed */
+    margin: 10px;
+  }
+
+  .Logo2 {
+    width: 150px; /* Adjust size as needed */
+    margin: 10px;
+  }
 }
