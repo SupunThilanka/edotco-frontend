@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './TowerDetails.module.scss';
 import backButtonImage from '../../assets/buttons/back.png';
+import homeButtonImage from '../../assets/buttons/home.png';
 import logo from '../../assets/logo/edotco-wlogo.png';
 import editIcon from '../../assets/buttons/edit.png';
 import deleteIcon from '../../assets/buttons/delete.png';
@@ -56,6 +57,10 @@ const TowerDetails = () => {
     navigate('/add-new-tower');
   };
 
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   const getTowerEquipments = (towerCreationId) => {
     return equipments
       .filter((equipment) => equipment.creation_id === towerCreationId)
@@ -70,6 +75,9 @@ const TowerDetails = () => {
         <Link className={styles.Logo} to="/">
             <img src={logo} alt="Logo" className={styles.Logo} />
         </Link>
+          <button onClick={handleHomeClick} className={styles.HomeButton}>
+            <img src={homeButtonImage} alt="Back" className={styles.BackButtonImage} />
+          </button>
           <button onClick={handleBackClick} className={styles.BackButton}>
             <img src={backButtonImage} alt="Back" className={styles.BackButtonImage} />
           </button>

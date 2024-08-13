@@ -4,6 +4,7 @@ import styles from './AddNewTower.module.scss';
 import TowerTypeDropdown from '../../components/CustomDropdown/TowerTypeDropdown';
 import EquipmentSelectDropdown from '../../components/CustomDropdown/EquipmentSelectDropdown';
 import backButtonImage from '../../assets/buttons/back.png';
+import homeButtonImage from '../../assets/buttons/home.png';
 import logo from '../../assets/logo/edotco-wlogo.png';
 import { Link } from 'react-router-dom';
 // import { Select } from '@mui/material';
@@ -84,6 +85,10 @@ export default function EditTower() {
     navigate('/tower-details');
   };
 
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   const handleSave = (event) => {
     event.preventDefault();
 
@@ -146,6 +151,9 @@ export default function EditTower() {
         <Link className={styles.Logo} to="/">
             <img src={logo} alt="Logo" className={styles.Logo} />
         </Link>
+          <button onClick={handleHomeClick} className={styles.HomeButton}>
+            <img src={homeButtonImage} alt="Back" className={styles.BackButtonImage} />
+          </button>
           <button onClick={handleBackClick} className={styles.BackButton}>
             <img src={backButtonImage} alt="Back" className={styles.BackButtonImage} />
           </button>
