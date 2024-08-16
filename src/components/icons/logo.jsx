@@ -40,7 +40,9 @@ const light = (
   </svg>
 );
 
-export default {
+const logoThemes = {
   dark,
   light,
 };
+
+export default logoThemes;

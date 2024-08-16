@@ -7,8 +7,6 @@ import backButtonImage from '../../assets/buttons/back.png';
 import homeButtonImage from '../../assets/buttons/home.png';
 import logo from '../../assets/logo/edotco-wlogo.png';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo/edotco-wlogo.png';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 // import { Select } from '@mui/material';
 
