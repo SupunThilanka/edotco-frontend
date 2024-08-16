@@ -7,6 +7,7 @@ import backButtonImage from '../../assets/buttons/back.png';
 // import eyeImage from '../../assets/buttons/eye.png';
 import logo from '../../assets/logo/edotco-wlogo.png'; // Adjust the path as necessary
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function AddNewTower() {
   const [towerTypes, setTowerTypes] = useState([]);
@@ -118,7 +119,21 @@ export default function AddNewTower() {
       })
       .catch((error) => {
         console.error('Error creating tower:', error);
-        alert(`Error creating tower: ${error.message}`);
+        Swal.fire({
+          title: 'Error Creating Tower',
+          html: `It is possible due to the following reasons:<br>
+            <br>1. Might be some tower already exists in this location (Latitude & Longitude).
+            <br>2. Latitude, Longitude & Height must be numbers.
+            <br>3. Any missing fields.`,
+          icon: 'error',
+          customClass: {
+            popup: styles['custom-swal-popup'],
+            title: styles['custom-swal-title'],
+            htmlContainer: styles['custom-swal-content'], // This applies your custom content styles
+            confirmButton: styles['custom-swal-confirm-button'],
+          },
+          backdrop: `rgba(0,0,0,0.4)`, // Custom background overlay color
+        });
       });
   };
   

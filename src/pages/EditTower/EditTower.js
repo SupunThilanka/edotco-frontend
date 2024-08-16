@@ -6,6 +6,7 @@ import EquipmentSelectDropdown from '../../components/CustomDropdown/EquipmentSe
 import backButtonImage from '../../assets/buttons/back.png';
 import logo from '../../assets/logo/edotco-wlogo.png';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 // import { Select } from '@mui/material';
 
 export default function EditTower() {
@@ -120,7 +121,24 @@ export default function EditTower() {
           navigate('/tower-details'); // Navigate back to the details page
         }, 1000);
       })
-      .catch((error) => console.error('Error updating tower:', error));
+      .catch((error) => {
+        console.error('Error updating tower:', error)
+        Swal.fire({
+          title: 'Error Creating Tower',
+          html: `It is possible due to the following reasons:<br>
+            <br>1. A tower might be already exists in this location (Latitude & Longitude).
+            <br>2. Latitude, Longitude & Height must be a number.
+            <br>3. Any missing fields.`,
+          icon: 'error',
+          customClass: {
+            popup: styles['custom-swal-popup'],
+            title: styles['custom-swal-title'],
+            htmlContainer: styles['custom-swal-content'], // This applies your custom content styles
+            confirmButton: styles['custom-swal-confirm-button'],
+          },
+          backdrop: `rgba(0,0,0,0.4)`, // Custom background overlay color
+        });
+    });
   };
 
   const handleDelete = () => {
