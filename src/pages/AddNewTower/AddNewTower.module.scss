@@ -224,12 +224,17 @@ div.swal2-html-container {
 }
 
 .custom-swal-confirm-button {
-  border: 1px !important; /* Define the border width, style, and color */
+  border: 1.5px solid #f55757!important; /* Define the border width, style, and color */
   border-radius: .25em !important;
   background: initial !important;
-  background-color: #f55757 !important; /* Custom background color */
+  background-color: #0b0f1a !important; /* Custom background color */
   color: #ffffff !important; /* Custom text color */
   font-size: 1em !important;
+
+    &:hover {
+    background-color: #364a82 !important; /* Change this to your desired hover color */
+    color: #ffffff !important; /* Optional: change text color on hover */
+}
 }
 
 /* Media queries for responsiveness */

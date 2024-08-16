@@ -146,19 +146,36 @@ export default function EditTower() {
     });
   };
 
-  const handleDelete = () => {
-
-    const confirmDelete = window.confirm("Are you sure you want to delete this tower?");
-    if (confirmDelete) {
-    fetch(`http://localhost:8800/api/towers/${id}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Successfully deleted tower:', data);
-        navigate('/tower-details'); // Navigate back to the details page
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you really want to delete this tower? This action cannot be undone.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+      customClass: {
+        popup: styles['custom-swal-popup'],
+        title: styles['custom-swal-title'],
+        htmlContainer: styles['custom-swal-content'],
+        confirmButton: styles['custom-swal-confirm-button'],
+        cancelButton: styles['custom-swal-cancel-button'],
+      },
+      backdrop: `rgba(0,0,0,0.4)`,
+    });
+  
+    if (result.isConfirmed) {
+      fetch(`http://localhost:8800/api/towers/${id}`, {
+        method: 'DELETE',
       })
-      .catch((error) => console.error('Error deleting tower:', error));
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Successfully deleted tower:', data);
+          navigate('/tower-details'); // Navigate back to the details page
+        })
+        .catch((error) => console.error('Error deleting tower:', error));
+    } else {
+      console.log('Tower deletion was canceled');
     }
   };
 

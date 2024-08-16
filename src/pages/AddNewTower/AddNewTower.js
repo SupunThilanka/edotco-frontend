@@ -127,9 +127,9 @@ export default function AddNewTower() {
         Swal.fire({
           title: 'Error Creating Tower',
           html: `It is possible due to the following reasons:<br>
-            <br>1. Might be some tower already exists in this location (Latitude & Longitude).
+            <br>1. Might be some tower already exists in this location<br>(Try different Latitude & Longitude or remove excisting Tower).
             <br>2. Latitude, Longitude & Height must be numbers.
-            <br>3. Any missing fields.`,
+            <br>3. Check whether any missing fields there.`,
           icon: 'error',
           customClass: {
             popup: styles['custom-swal-popup'],

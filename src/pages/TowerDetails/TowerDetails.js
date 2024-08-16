@@ -7,6 +7,7 @@ import logo from '../../assets/logo/edotco-wlogo.png';
 import editIcon from '../../assets/buttons/edit.png';
 import deleteIcon from '../../assets/buttons/delete.png';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const TowerDetails = () => {
   const [towers, setTowers] = useState([]);
@@ -39,9 +40,25 @@ const TowerDetails = () => {
     navigate(`/edit-tower/${tower.creation_id}`);
   };
 
-  const handleDelete = (tower) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this tower?");
-    if (confirmDelete) {
+  const handleDelete = async (tower) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you really want to delete this tower? This action cannot be undone.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+      customClass: {
+        popup: styles['custom-swal-popup'],
+        title: styles['custom-swal-title'],
+        htmlContainer: styles['custom-swal-content'],
+        confirmButton: styles['custom-swal-confirm-button'], // Custom confirm button styles
+        cancelButton: styles['custom-swal-cancel-button'],   // Custom cancel button styles
+      },
+      backdrop: `rgba(0,0,0,0.4)`, // Custom background overlay color
+    });
+  
+    if (result.isConfirmed) {
       fetch(`http://localhost:8800/api/towers/${tower.creation_id}`, {
         method: 'DELETE',
       })
@@ -50,6 +67,8 @@ const TowerDetails = () => {
           setTowers(towers.filter((t) => t.creation_id !== tower.creation_id));
         })
         .catch((error) => console.error('Error deleting tower:', error));
+    } else {
+      console.log("Tower deletion was canceled");
     }
   };
   

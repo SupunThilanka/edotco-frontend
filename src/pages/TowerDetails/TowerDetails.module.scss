@@ -110,6 +110,54 @@ button {
   width: 25px;
 }
 
+//Swal styles
+
+div.swal2-html-container {
+  color: #ffffff !important;
+  text-align: left !important; /* Ensure text is left-aligned */
+  white-space: pre-line !important; /* Support for \n line breaks */
+}
+
+
+.custom-swal-popup {
+  background-color: #0b0f1a !important;
+  border: 1px solid #707070 !important;
+  width: 600px !important;
+  height: auto !important;
+  border-radius: 15px !important;
+}
+
+.custom-swal-title {
+  color: #ffffff !important;
+}
+
+.custom-swal-content {
+  color: #ffffff !important;
+  text-align: left !important; /* Align text to the left */
+}
+
+.custom-swal-confirm-button {
+  border: 1px solid #fff !important;
+  border-radius: .25em !important;
+  background-color: #0b0f1a !important; /* Custom background color */
+  color: #ffffff !important; /* Custom text color */
+  font-size: 1em !important;
+
+  &:hover {
+    background-color: #ff5733 !important; /* Change this to your desired hover color */
+    color: #ffffff !important; /* Optional: change text color on hover */
+}
+}
+
+.custom-swal-cancel-button {
+  border: 1px solid #ccc !important;
+  border-radius: .25em !important;
+  background-color: #cccccc !important; /* Custom background color */
+  color: #000000 !important; /* Custom text color */
+  font-size: 1em !important;
+}
+
+
 /* Media queries for responsiveness */
 
 /* Tablet view */
