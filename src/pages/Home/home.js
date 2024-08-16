@@ -14,7 +14,7 @@ export default function Home() {
         <div className={styles.Des}>Powered by Ursaleo</div>
         <div className={styles.MenuButtons}>
           <Link to="/add-new-tower">
-            <button className={styles.MenuButton}>Add New Tower</button>
+            <button className={styles.MenuButton}>Tower Managment Wizard</button>
           </Link>
           <Link to="/add-new-template">
             <button className={styles.MenuButton}>Add New Template</button>

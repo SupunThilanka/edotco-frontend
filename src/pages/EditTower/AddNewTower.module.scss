@@ -200,6 +200,39 @@ button {
   font-size: 16px;
 }
 
+//Swal styles
+.custom-swal-popup {
+  background-color: #0b0f1a !important;
+  border: 1px solid #f27474 !important;
+  width: 600px !important;
+  height: auto !important;
+  border-radius: 15px !important;
+}
+
+.custom-swal-title {
+  color: #f27474 !important;
+}
+
+.custom-swal-content {
+  color: #ffffff !important;
+  text-align: left !important; /* Align text to the left */
+}
+
+div.swal2-html-container {
+  color: #ffffff !important;
+  text-align: left !important; /* Ensure text is left-aligned */
+  white-space: pre-line !important; /* Support for \n line breaks */
+}
+
+.custom-swal-confirm-button {
+  border: 1px !important; /* Define the border width, style, and color */
+  border-radius: .25em !important;
+  background: initial !important;
+  background-color: #f55757 !important; /* Custom background color */
+  color: #ffffff !important; /* Custom text color */
+  font-size: 1em !important;
+}
+
 /* Media queries for responsiveness */
 
 /* Tablet view */
