@@ -108,8 +108,8 @@ const TowerDetails = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Longitude</th>
                 <th>Latitude</th>
+                <th>Longitude</th>
                 <th>Tower Type</th>
                 <th>Height(m)</th>
                 <th>Equipments</th>
@@ -123,8 +123,8 @@ const TowerDetails = () => {
               .map((tower) => (
                 <tr key={tower.creation_id}>
                   <td>{tower.creation_id}</td>
-                  <td>{tower.longitude}</td>
                   <td>{tower.latitude}</td>
+                  <td>{tower.longitude}</td>
                   <td>{tower.tower_name}</td>
                   <td>{tower.height}</td>
                   <td>{getTowerEquipments(tower.creation_id)}</td>
